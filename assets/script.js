@@ -309,7 +309,7 @@ function addFavoriteToList() {
       var addFavoriteIcon = document.createElement("i");
       addFavoriteIcon.classList.add("material-icons");
       addFavoriteIcon.classList.add("favoriteButtons");
-      var addFavoriteIconTextNode = document.createTextNode("add");
+      var addFavoriteIconTextNode = document.createTextNode("remove");
       addFavoriteIcon.appendChild(addFavoriteIconTextNode);
 
       // CREATE CARD CONTENT DIV
