@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&family=Space+Grotesk:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>Launch-Time</title>
+  </head>
+
+  <body>
+    <header>
+      <div id="logo">
+        <img src="images/logo2.png" alt="logo lanch time" />
+      </div>
+    </header>
+
+    <!-- Search bar -->
+    <div class="row">
+      <div class="container">
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <div class="user-view">
+              <span class="white-text name">Filters</span>
+            </div>
+          </li>
+          <li>
+            <div class="divider"></div>
+          </li>
+
+          <!-- dates -->
+          <div class="date-inputs">
+            <input type="date" />
+            <span>to</span>
+            <input type="date" />
+          </div>
+          <!-- Switch -->
+          <li>Programs</li>
+          <div class="switch">
+            <label>
+              SpaceX On/Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+            </label>
+          </div>
+          <div class="switch">
+            <label>
+              Blue Origin On/Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+            </label>
+          </div>
+          <div class="switch">
+            <label>
+              ROSCOSMOS On/Off
+              <input type="checkbox" />
+              <span class="lever"></span>
+            </label>
+          </div>
+          <li><a class="waves-effect waves-light btn">Find Launches</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Search bar -->
+    <div id="main customMain">
+      <div id="main-page">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s4">
+                <a href="#test1"
+                  ><i class="material-icons">schedule</i>Recent & Upcoming
+                  Launches</a
+                >
+              </li>
+              <li class="tab col s4">
+                <a href="#test2"
+                  ><i class="material-icons">search</i>Search lauches</a
+                >
+              </li>
+              <li class="tab col s4">
+                <a href="#test3"
+                  ><i class="material-icons">bookmark_border</i>Saved
+                  Launches</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div id="test1" class="col s12">
+            <div class="col s6">
+              <div><p>Past Launches</p></div>
+              <div id="lastFiveLaunchesList"></div>
+            </div>
+            <div class="col s6">
+              <div><p>Upcoming Launches</p></div>
+              <div id="nextFiveLaunchesList"></div>
+            </div>
+          </div>
+
+          <div id="test2" class="col s12">
+            <div class="col s12">
+              <a href="#" data-target="slide-out" class="sidenav-trigger"
+                ><i class="material-icons">search</i></a
+              >
+            </div>
+          </div>
+          <div id="test3" class="col s12"></div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
