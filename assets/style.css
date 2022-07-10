@@ -25,11 +25,7 @@ header {
   display: block;
   margin: 0 auto;
 }
-p {
-  text-align: center;
 
-  font-size: 15px;
-}
 .tabs .tab a {
   color: white;
 }
@@ -52,6 +48,35 @@ ul {
   list-style-type: none;
 }
 
+.findBtn {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.customCard {
+  border-bottom: 1px solid var(--secondary-text-color);
+}
+
+.sidenav {
+  padding: 25px !important;
+}
+input {
+  font-family: "Raleway", sans-serif;
+  width: 60%;
+}
+.date-inputs div {
+  color: var(--primary-color);
+  text-align: center;
+}
+.btn {
+  background-color: var(--primary-color);
+}
+
+.sidenav li > a.btn:hover {
+  background-color: var(--secondary-color);
+}
+
 #nextFiveLaunchesList li,
 #lastFiveLaunchesList li {
   margin-bottom: 10px;
@@ -63,6 +88,16 @@ ul {
   margin-bottom: 10px;
 }
 
+.agencyImg {
+  border-radius: 20px;
+  width: 200px;
+  height: 120px;
+}
+.saveBtn {
+  background-color: red;
+  border-radius: 50%;
+  padding: 12px 5px 3px 5px;
+}
 /* .shipImages {
     height: 50px;
     width: 50px;
