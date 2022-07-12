@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    <!-- Search bar -->
+    <!-- Filter section margin on top -->
     <div class="row">
       <div class="container">
         <ul id="slide-out" class="sidenav">
@@ -53,35 +53,18 @@
             <div class="divider"></div>
           </li>
 
-          <!-- dates -->
+          <!-- Filters by date, company and city -->
           <div class="date-inputs">
             <input type="date" id="startDate" />
             <div>to</div>
             <input type="date" id="endDate" />
           </div>
-          <!-- Switch -->
-          <!-- <li>Programs</li>
-          <div class="switch">
-            <label>
-              SpaceX On/Off
-              <input type="checkbox" />
-              <span class="lever"></span>
-            </label>
+          <label for="company">Choose a Company</label>
+          <select id="company"></select>
+          <div>
+            <label for="cities">Choose a City</label>
+            <select id="cities"></select>
           </div>
-          <div class="switch">
-            <label>
-              Blue Origin On/Off
-              <input type="checkbox" />
-              <span class="lever"></span>
-            </label>
-          </div>
-          <div class="switch">
-            <label>
-              ROSCOSMOS On/Off
-              <input type="checkbox" />
-              <span class="lever"></span>
-            </label>
-          </div> -->
           <li>
             <a class="waves-effect waves-light btn" id="findBtn"
               >Find Launches</a
@@ -91,7 +74,7 @@
       </div>
     </div>
 
-    <!-- Middle bar -->
+    <!-- Navbar -->
     <div id="main">
       <div id="main-page">
         <div class="row">
@@ -99,18 +82,20 @@
             <ul class="tabs">
               <li class="tab col s4">
                 <a href="#test1"
-                  ><i class="material-icons">schedule</i>Upcoming Launches</a
+                  ><i class="material-icons">schedule</i
+                  ><span class="navText">Upcoming Launches</span></a
                 >
               </li>
               <li class="tab col s4">
                 <a href="#test2"
-                  ><i class="material-icons">search</i>Search lauches</a
+                  ><i class="material-icons">search</i
+                  ><span class="navText">Search Launches</span></a
                 >
               </li>
               <li class="tab col s4">
                 <a href="#test3"
-                  ><i class="material-icons">bookmark_border</i>Saved
-                  Launches</a
+                  ><i class="material-icons">bookmark_border</i
+                  ><span class="navText">Saved Launches</span></a
                 >
               </li>
             </ul>
@@ -124,45 +109,45 @@
             </div>
           </div>
         </div>
-
+        <!-- Itzel's Search Launches page -->
         <div class="row">
-          <div id="test2" class="col s12">
-            <div class="col s2">
+          <div id="test2" class="col s12 customIconSearch">
+            <div class="col s12 m2 customIconBigScreen">
               <a
                 href="#"
                 data-target="slide-out"
                 class="sidenav-trigger findBtn"
               >
-                <span>Find a launch</span>
                 <i class="material-icons">search</i>
               </a>
             </div>
 
-            <div class="col s9" id="searchresults"></div>
-            <div class="col s1"></div>
+            <div class="col s12 m9" id="searchresults"></div>
+            <div class="col s0 m1"></div>
           </div>
         </div>
 
         <div class="row">
-          <div id="test3" class="col s12"></div>
+          <div class="col s1"></div>
+          <div id="test3" class="col s10 clearFuture"></div>
+          <div class="col s0 m1"></div>
         </div>
-
-        <!-- <div></div> -->
-        <!-- Dawson Modal Code for Desc -->
-        <div id="modal1" class="modal modal-fixed-footer">
-          <div class="modal-content row">
-            <img src="" alt="Rocket Image" id="modal-img" class="col s5" />
-            <h4 id="modal-title" class="col s7">Temp</h4>
-            <p id="modal-desc" class="col s7">Temp</p>
-            <h5 id="modal-tMinus" class="col s12">TMinus</h5>
-            <div id="modal-weather" class="col s5"></div>
-          </div>
-          <div class="modal-footer">
-            <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
-          </div>
-        </div>
-        <!-- Dawson End of Code-->
       </div>
+      <!-- Dawson Modal Code for Desc -->
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content row">
+          <img src="" alt="Rocket Image" id="modal-img" class="col s5" />
+          <h4 id="modal-title" class="col s7">Temp</h4>
+          <p id="modal-desc" class="col s7">Temp</p>
+          <h5 id="modal-tMinus" class="col s12">TMinus</h5>
+          <div id="modal-weather" class="col s5"></div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
+
+      <!-- Dawson End of Code-->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
