@@ -515,8 +515,24 @@ var companies = "";
 var cities = "";
 
 // Function to filter data by cities, companies and date
+
 function displayLaunches(response) {
   var results = response.data.results;
+
+  var citiesOptions = [
+    ...new Set(
+      results.map(function (launch) {
+        return launch.pad.location.name;
+      })
+    ),
+  ];
+  var companyOptions = [
+    ...new Set(
+      results.map(function (launch) {
+        return launch.launch_service_provider.name;
+      })
+    ),
+  ];
   var citiesFilterHTML = `<option value="" disabled selected></option>`;
   for (i = 0; i < results.length; i++) {
     citiesFilterHTML += `<option>${results[i].pad.location.name}</option>`;
@@ -560,6 +576,21 @@ function displayLaunches(response) {
     localStorage.setItem("savedMissions", savedMissions);
     addFavoriteToList();
   };
+
+  // Modal listeners
+  var makeHandler = function displayModalHandler(id) {
+    return function () {
+      writeModal(id);
+    };
+  };
+
+  for (i = 0; i < results.length; i++) {
+    var id = results[i].id;
+    document
+      .querySelector("#search" + id + " .moreBtn")
+      .addEventListener("click", makeHandler(id));
+  }
+  // Modal listeners
 
   var elements = document.querySelectorAll(".search-add-favorite i");
   for (var i = 0; i < elements.length; i++) {
@@ -645,3 +676,32 @@ function handleFilterSearch(event) {
 // Btn Event listener
 var findLaunch = document.querySelector("#findBtn");
 findLaunch.addEventListener("click", handleFilterSearch);
+
+// Dawson Code BELOW this line -----------------------------------------------------------------------
+
+function writeModal(LaunchID) {
+  fetch(`https://lldev.thespacedevs.com/2.2.0/launch/${LaunchID}`, {
+    method: "GET", //GET is the default.
+    credentials: "same-origin", // include, *same-origin, omit
+    redirect: "follow", // manual, *follow, error
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      mLaunch = data;
+      mTitle = mLaunch.name;
+      mDescription = mLaunch.mission.description;
+      mImage = mLaunch.image;
+      // var mWeather =
+      mTimeDiff = moment(mLaunch.window_start).fromNow();
+      document.getElementById("modal-title").innerText = mTitle;
+      document.getElementById("modal-desc").innerText = mDescription;
+      document.getElementById("modal-img").src = mImage;
+      // document.getElementById("modal-weather").textContent = mWeather;
+      document.getElementById("modal-tMinus").textContent = "T- " + mTimeDiff;
+    })
+    .then(function () {
+      Dinstance.open();
+    });
+}
