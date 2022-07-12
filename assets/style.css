@@ -143,6 +143,22 @@ min-width: 170px; */
   color: white;
 }
 
+/* Dawson CSS */
+.modal {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+}
+.modal .modal-footer {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+}
+.modal .modal-footer a {
+  color: var(--secondary-text-color);
+}
+/* Dawson End of CSS*/
+
+
+
 /* Media queries */
 
 @media (max-width: 650px) {

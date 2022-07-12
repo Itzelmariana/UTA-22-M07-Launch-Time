@@ -362,12 +362,27 @@ function displayLaunches(response) {
   var results = response.data.results.filter(function (launch) {
     return moment(launch.net).isBetween(startDate, endDate);
   });
-
   var searchHTML = ``;
-
   for (i = 0; i < Math.min(results.length, 8); i++) {
     searchHTML += launchComponent(results[i]);
   }
+  document.querySelector("#searchresults").innerHTML = searchHTML;
+  var saveLaunchHandler = function (event) {
+    event.preventDefault();
+    var el = event.target;
+    var dataId = el.dataset.id;
+    var index = savedMissions.indexOf(dataId);
+
+    if (index == -1) {
+      savedMissions.push(dataId);
+      el.textContent = "remove";
+    } else {
+      el.textContent = "add";
+      savedMissions.splice(index, 1);
+    }
+    localStorage.setItem("savedMissions", savedMissions);
+    addFavoriteToList();
+  };
   //searchHTML = searchHTML + `</span>`;
 
   document.querySelector("#searchresults").innerHTML = searchHTML;
@@ -425,6 +440,9 @@ function launchComponent(launchInfo) {
 // Call to show 8 upcoming launches
 searchInfo();
 
+// Weather API Key
+var apiKey = "PNESG34KAB5WUHJM8RRPRXZY7";
+
 // Function to get Weather
 function getWeather(launchInfo) {
   var date = launchInfo.net;
@@ -442,7 +460,7 @@ function getWeather(launchInfo) {
     weatherElement.textContent = response.data.days[0].description;
   }
 
-  var apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}/${futuredate}?unitGroup=us&include=days&key=X2BCVEUMVC22RSDXLPE88U4YL&contentType=json`;
+  var apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}/${futuredate}?unitGroup=us&include=days&key=${apiKey}&contentType=json`;
   axios.get(apiUrl).then(showWeather);
 }
 
