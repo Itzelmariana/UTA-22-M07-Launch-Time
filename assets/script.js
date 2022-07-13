@@ -534,15 +534,14 @@ function displayLaunches(response) {
     ),
   ];
   var citiesFilterHTML = `<option value="" disabled selected></option>`;
-  for (i = 0; i < results.length; i++) {
-    citiesFilterHTML += `<option>${results[i].pad.location.name}</option>`;
+  for (var i = 0; i < citiesOptions.length; i++) {
+    citiesFilterHTML += `<option>${citiesOptions[i]}</option>`;
   }
 
   var companyFilterHTML = `<option value="" disabled selected></option>`;
-  for (i = 0; i < results.length; i++) {
-    companyFilterHTML += `<option>${results[i].launch_service_provider.name}</option>`;
+  for (var i = 0; i < companyOptions.length; i++) {
+    companyFilterHTML += `<option>${companyOptions[i]}</option>`;
   }
-
   document.querySelector("#company").innerHTML = companyFilterHTML;
   document.querySelector("#cities").innerHTML = citiesFilterHTML;
 
@@ -576,6 +575,10 @@ function displayLaunches(response) {
     localStorage.setItem("savedMissions", savedMissions);
     addFavoriteToList();
   };
+  var elements = document.querySelectorAll(".search-add-favorite i");
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("click", saveLaunchHandler);
+  }
 
   // Modal listeners
   var makeHandler = function displayModalHandler(id) {
@@ -592,11 +595,6 @@ function displayLaunches(response) {
   }
   // Modal listeners
 
-  var elements = document.querySelectorAll(".search-add-favorite i");
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener("click", saveLaunchHandler);
-  }
-
   for (i = 0; i < results.length; i++) {
     searchHTML += getWeather(results[i]);
   }
@@ -604,7 +602,8 @@ function displayLaunches(response) {
 
 // Function to search launches inside API
 function searchInfo() {
-  var apiURL = "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/";
+  var apiURL =
+    "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?limit=100";
   axios.get(apiURL).then(displayLaunches);
 }
 
@@ -625,7 +624,8 @@ function launchComponent(launchInfo) {
       </div>
       <div class="col s5 m3 customWeather">
         <p>Weather: <span class="weather"></span></p>
-      </div> 
+        <button class="moreBtn" id="moreBtn">More</button>
+      </div>  
       <div class="col s1 m1 customIcon">
         <a href="#" class="saveBtn search-add-favorite"><i data-id="${
           launchInfo.id
@@ -640,11 +640,11 @@ function launchComponent(launchInfo) {
 // Call function to show upcoming launches
 searchInfo();
 
-//// Key for weatherAPI
+// Key for weatherAPI
 
 // var apiKey = "PNESG34KAB5WUHJM8RRPRXZY7";
 
-//// Function to extract weather
+// // Function to extract weather
 // function getWeather(launchInfo) {
 //   var date = launchInfo.net;
 //   var futuredate = moment(date).format("X");
@@ -655,12 +655,11 @@ searchInfo();
 //     var weatherElement = document.querySelector(
 //       "#search" + launchInfo.id + " .weather"
 //     );
-
 //     weatherElement.textContent = response.data.days[0].description;
 //   }
 
-//   var apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}/${futuredate}?unitGroup=us&include=days&key=${apiKey}&contentType=json`;
-//   axios.get(apiUrl).then(showWeather);
+//   var apiUrlWeather = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}/${futuredate}?unitGroup=us&include=days&key=${apiKey}&contentType=json`;
+//   axios.get(apiUrlWeather).then(showWeather);
 // }
 
 // Function to filter date, cities and companies
@@ -693,9 +692,11 @@ function writeModal(LaunchID) {
       mTitle = mLaunch.name;
       mDescription = mLaunch.mission.description;
       mImage = mLaunch.image;
+      mCompany = mLaunch.launch_service_provider.name;
       // var mWeather =
       mTimeDiff = moment(mLaunch.window_start).fromNow();
       document.getElementById("modal-title").innerText = mTitle;
+      document.getElementById("modal-company").innerText = mCompany;
       document.getElementById("modal-desc").innerText = mDescription;
       document.getElementById("modal-img").src = mImage;
       // document.getElementById("modal-weather").textContent = mWeather;

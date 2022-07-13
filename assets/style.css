@@ -8,14 +8,20 @@
   --secondary-color: #054569;
   --primary-text-color: white;
   --secondary-text-color: #ced7e0;
+  --third-color: #5591a9;
+}
+
+html {
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
   height: 100vh;
   width: 100%;
-  background-image: url("../images/background.jpg");
-  background-size: cover;
-  background-position: center center;
   color: var(--primary-text-color);
   font-family: "Raleway", sans-serif;
 }
@@ -49,11 +55,6 @@ a {
 /* ---> Search Launches style */
 
 /* Search launches side bar style */
-.findBtn {
-  background-color: var(--secondary-color);
-  padding: 10px;
-  border-radius: 20px;
-}
 .sidenav {
   padding: 25px !important;
 }
@@ -113,12 +114,28 @@ input {
   opacity: 70%;
 }
 .findBtn {
+  background-color: var(--primary-text-color);
+  padding: 10px;
   border-radius: 50%;
   padding-top: 18px;
+  color: var(--primary-color);
+  transition-delay: 2ms;
 }
 .findBtn:hover {
   background-color: var(--secondary-text-color);
   color: var(--primary-color);
+}
+.moreBtn {
+  padding: 4px 8px 4px 8px;
+  font-family: "Raleway", sans-serif;
+  color: var(--primary-color);
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+.moreBtn:hover {
+  background-color: var(--third-color);
+  color: var(--primary-text-color);
 }
 
 /* ---> Upcoming Launches style */
@@ -139,9 +156,10 @@ input {
 .agencyImage {
   background-color: black !important;
 }
-.card .card-image .card-title {
-  font-size: 2vw;
-}
+/* .card .card-image .card-title {
+  /* font-size: 2vw;
+ } */
+
 .card-content {
   color: white;
   opacity: 0.8;
@@ -151,6 +169,7 @@ input {
 }
 .timer-div {
   color: white;
+  text-align: center;
 }
 
 /* Dawson CSS */
@@ -188,10 +207,5 @@ input {
   }
   .navText {
     display: none;
-  }
-  .findBtn {
-    color: var(--secondary-text-color);
-    background-color: var(--secondary-color);
-    transition: 2ms;
   }
 }
